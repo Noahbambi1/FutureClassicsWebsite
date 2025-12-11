@@ -4,25 +4,39 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  padding: 1.5rem 0;
+  padding: 1rem 0;
   transition: all var(--transition-smooth);
   background-color: rgba(250, 248, 245, 0.65);
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  @media (min-width: 768px) {
+    padding: 1.5rem 0;
+  }
 
   &.scrolled {
-    background-color: rgba(250, 248, 245, 0.75);
+    background-color: rgba(250, 248, 245, 0.85);
     backdrop-filter: blur(12px);
-    padding: 1rem 0;
+    -webkit-backdrop-filter: blur(12px);
+    padding: 0.75rem 0;
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+
+    @media (min-width: 768px) {
+      padding: 1rem 0;
+    }
   }
 
   &__container {
     max-width: var(--max-width);
     margin: 0 auto;
-    padding: 0 var(--space-md);
+    padding: 0 var(--space-sm);
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @media (min-width: 768px) {
+      padding: 0 var(--space-md);
+    }
   }
 
   &__logo {
@@ -63,10 +77,14 @@
       opacity: 0;
       visibility: hidden;
       transition: all var(--transition-smooth);
+      z-index: 1000;
+      // Smooth slide-in effect
+      transform: translateY(-10px);
 
       &.open {
         opacity: 1;
         visibility: visible;
+        transform: translateY(0);
       }
     }
   }
@@ -74,12 +92,16 @@
   &__nav-list {
     display: flex;
     align-items: center;
-    gap: 3rem;
+    gap: 2rem;
     list-style: none;
+
+    @media (min-width: 769px) {
+      gap: 3rem;
+    }
 
     @media (max-width: 768px) {
       flex-direction: column;
-      gap: 2rem;
+      gap: 2.5rem;
     }
   }
 
@@ -97,10 +119,15 @@
     text-decoration: none;
     position: relative;
     padding: 0.5rem 0;
+    // Ensure touch-friendly tap target
+    min-height: 44px;
+    display: flex;
+    align-items: center;
 
     @media (max-width: 768px) {
-      font-size: 1.25rem;
+      font-size: 1.5rem;
       letter-spacing: 0.15em;
+      padding: 0.75rem 0;
     }
 
     &::after {
@@ -130,12 +157,18 @@
   &__mobile-toggle {
     display: none;
     flex-direction: column;
-    gap: 5px;
-    padding: 10px;
+    gap: 6px;
+    padding: 12px;
     background: none;
     border: none;
     cursor: pointer;
     z-index: 1001;
+    // Ensure touch-friendly tap target
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+    margin-right: -12px; // Offset padding for alignment
 
     @media (max-width: 768px) {
       display: flex;
@@ -143,21 +176,23 @@
   }
 
   &__mobile-toggle-bar {
-    width: 24px;
+    width: 26px;
     height: 2px;
     background-color: var(--color-black);
     transition: all var(--transition-smooth);
+    border-radius: 1px;
   }
 
   &__mobile-toggle.open &__mobile-toggle-bar {
     &:nth-child(1) {
-      transform: rotate(45deg) translate(5px, 5px);
+      transform: rotate(45deg) translate(6px, 6px);
     }
     &:nth-child(2) {
       opacity: 0;
+      transform: scaleX(0);
     }
     &:nth-child(3) {
-      transform: rotate(-45deg) translate(5px, -5px);
+      transform: rotate(-45deg) translate(6px, -6px);
     }
   }
 }

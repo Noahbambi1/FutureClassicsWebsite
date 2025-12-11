@@ -1,9 +1,13 @@
 // Page Header
 .page-header {
   position: relative;
-  padding: calc(var(--header-height) + var(--space-2xl)) 0 var(--space-xl);
+  padding: calc(var(--header-height) + var(--space-lg)) 0 var(--space-lg);
   background-color: var(--color-cream);
   overflow: hidden;
+
+  @media (min-width: 768px) {
+    padding: calc(var(--header-height) + var(--space-2xl)) 0 var(--space-xl);
+  }
 
   &__background {
     position: absolute;
@@ -21,26 +25,40 @@
   &__tag {
     display: inline-block;
     font-family: var(--font-sans);
-    font-size: 0.75rem;
+    font-size: 0.6875rem;
     font-weight: 400;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--color-taupe);
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
+
+    @media (min-width: 768px) {
+      font-size: 0.75rem;
+      margin-bottom: 1rem;
+    }
   }
 
   &__title {
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-size: clamp(2rem, 6vw, 4.5rem);
     font-weight: 300;
     line-height: 1.1;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
+
+    @media (min-width: 768px) {
+      margin-bottom: 1.5rem;
+    }
   }
 
   &__intro {
-    font-size: 1.25rem;
+    font-size: 1rem;
     color: var(--color-charcoal);
     max-width: 600px;
-    line-height: 1.8;
+    line-height: 1.7;
+
+    @media (min-width: 768px) {
+      font-size: 1.25rem;
+      line-height: 1.8;
+    }
   }
 }
 
@@ -51,21 +69,30 @@
 
 .contact-grid {
   display: grid;
-  grid-template-columns: 1fr 1.5fr;
-  gap: var(--space-xl);
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
 
-  @media (max-width: 992px) {
-    grid-template-columns: 1fr;
+  @media (min-width: 768px) {
     gap: var(--space-lg);
+  }
+
+  @media (min-width: 992px) {
+    grid-template-columns: 1fr 1.5fr;
+    gap: var(--space-xl);
   }
 }
 
 // Contact Info
 .contact-info {
   &__block {
-    margin-bottom: var(--space-md);
-    padding-bottom: var(--space-md);
+    margin-bottom: var(--space-sm);
+    padding-bottom: var(--space-sm);
     border-bottom: 1px solid var(--color-warm-gray);
+
+    @media (min-width: 768px) {
+      margin-bottom: var(--space-md);
+      padding-bottom: var(--space-md);
+    }
 
     &:last-of-type {
       border-bottom: none;
@@ -74,12 +101,17 @@
 
   &__title {
     font-family: var(--font-sans);
-    font-size: 0.75rem;
+    font-size: 0.6875rem;
     font-weight: 500;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--color-taupe);
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
+
+    @media (min-width: 768px) {
+      font-size: 0.75rem;
+      margin-bottom: 1rem;
+    }
   }
 
   &__address,
@@ -88,9 +120,14 @@
     font-style: normal;
 
     p {
-      font-size: 1rem;
-      line-height: 1.8;
+      font-size: 0.9375rem;
+      line-height: 1.7;
       color: var(--color-charcoal);
+
+      @media (min-width: 768px) {
+        font-size: 1rem;
+        line-height: 1.8;
+      }
     }
   }
 
@@ -104,9 +141,16 @@
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    font-size: 1rem;
+    font-size: 0.9375rem;
     color: var(--color-charcoal);
     transition: color var(--transition-fast);
+    // Touch-friendly tap target
+    min-height: 44px;
+    padding: 0.25rem 0;
+
+    @media (min-width: 768px) {
+      font-size: 1rem;
+    }
 
     svg {
       color: var(--color-olive);
@@ -121,7 +165,11 @@
   &__social {
     display: flex;
     gap: 0.75rem;
-    margin-top: var(--space-md);
+    margin-top: var(--space-sm);
+
+    @media (min-width: 768px) {
+      margin-top: var(--space-md);
+    }
   }
 
   &__social-link {
@@ -145,47 +193,67 @@
 // Contact Form
 .contact-form-wrapper {
   background-color: var(--color-cream);
-  padding: var(--space-lg);
+  padding: var(--space-md);
   border-radius: 4px;
+
+  @media (min-width: 768px) {
+    padding: var(--space-lg);
+  }
 }
 
 .contact-form {
   &__group {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
+
+    @media (min-width: 768px) {
+      margin-bottom: 1.5rem;
+    }
   }
 
   &__row {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
 
-    @media (max-width: 576px) {
-      grid-template-columns: 1fr;
+    @media (min-width: 576px) {
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
     }
   }
 
   &__label {
     display: block;
     font-family: var(--font-sans);
-    font-size: 0.8125rem;
+    font-size: 0.75rem;
     font-weight: 400;
     letter-spacing: 0.05em;
     color: var(--color-charcoal);
     margin-bottom: 0.5rem;
+
+    @media (min-width: 768px) {
+      font-size: 0.8125rem;
+    }
   }
 
   &__input,
   &__select,
   &__textarea {
     width: 100%;
-    padding: 1rem;
+    padding: 0.875rem;
     font-family: var(--font-sans);
-    font-size: 1rem;
+    font-size: 16px; // Prevent iOS zoom on focus
     color: var(--color-black);
     background-color: var(--color-ivory);
     border: 1px solid var(--color-warm-gray);
     border-radius: 2px;
     transition: all var(--transition-fast);
+    // Touch-friendly tap target
+    min-height: 48px;
+
+    @media (min-width: 768px) {
+      padding: 1rem;
+      font-size: 1rem;
+    }
 
     &::placeholder {
       color: var(--color-stone);
@@ -209,7 +277,11 @@
 
   &__textarea {
     resize: vertical;
-    min-height: 150px;
+    min-height: 130px;
+
+    @media (min-width: 768px) {
+      min-height: 150px;
+    }
   }
 
   &__submit {
@@ -219,6 +291,7 @@
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+    min-height: 52px;
 
     &:disabled {
       opacity: 0.7;
@@ -243,28 +316,57 @@
 // Contact Success
 .contact-success {
   text-align: center;
-  padding: var(--space-lg);
+  padding: var(--space-md);
+
+  @media (min-width: 768px) {
+    padding: var(--space-lg);
+  }
 
   &__icon {
     color: var(--color-sage);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
+
+    @media (min-width: 768px) {
+      margin-bottom: 1.5rem;
+    }
+
+    svg {
+      width: 40px;
+      height: 40px;
+
+      @media (min-width: 768px) {
+        width: 48px;
+        height: 48px;
+      }
+    }
   }
 
   &__title {
     font-family: var(--font-serif);
-    font-size: 2rem;
+    font-size: 1.75rem;
     font-weight: 400;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
+
+    @media (min-width: 768px) {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
   }
 
   &__message {
-    font-size: 1rem;
+    font-size: 0.9375rem;
     color: var(--color-charcoal);
-    line-height: 1.8;
-    margin-bottom: 2rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
     max-width: 400px;
     margin-left: auto;
     margin-right: auto;
+
+    @media (min-width: 768px) {
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
   }
 }
 
