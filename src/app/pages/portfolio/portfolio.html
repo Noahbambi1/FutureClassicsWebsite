@@ -1,0 +1,72 @@
+<!-- Page Header -->
+<section class="page-header">
+  <div class="page-header__background"></div>
+  <div class="container">
+    <span class="page-header__tag">Our Work</span>
+    <h1 class="page-header__title">Portfolio</h1>
+    <p class="page-header__intro">
+      Explore our collection of custom kitchens, bathrooms, and living spaces. 
+      Each project reflects our commitment to quality and timeless design.
+    </p>
+  </div>
+</section>
+
+<!-- Portfolio Grid -->
+<section class="portfolio-grid section">
+  <div class="container">
+    <!-- Filter -->
+    <div class="portfolio-filter">
+      @for (category of categories; track category) {
+        <button 
+          class="portfolio-filter__btn"
+          [class.active]="activeCategory() === category"
+          (click)="setCategory(category)"
+        >
+          {{ category }}
+        </button>
+      }
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="portfolio-projects">
+      @for (project of filteredProjects; track project.id; let i = $index) {
+        <div 
+          class="portfolio-item"
+          [style.animation-delay.ms]="i * 100"
+          (click)="openProject(project)"
+        >
+          <div class="portfolio-item__image-wrapper">
+            <img [src]="project.image" [alt]="project.title" class="portfolio-item__image">
+            <div class="portfolio-item__overlay">
+              <span class="portfolio-item__category">{{ project.category }}</span>
+              <h3 class="portfolio-item__title">{{ project.title }}</h3>
+              <span class="portfolio-item__view">View Project</span>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox Modal -->
+@if (selectedProject()) {
+  <div class="lightbox" (click)="closeProject()">
+    <button class="lightbox__close" aria-label="Close">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"/>
+        <line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+    <div class="lightbox__content" (click)="$event.stopPropagation()">
+      <div class="lightbox__image-wrapper">
+        <img [src]="selectedProject()!.image" [alt]="selectedProject()!.title" class="lightbox__image">
+      </div>
+      <div class="lightbox__info">
+        <span class="lightbox__category">{{ selectedProject()!.category }}</span>
+        <h2 class="lightbox__title">{{ selectedProject()!.title }}</h2>
+        <p class="lightbox__description">{{ selectedProject()!.description }}</p>
+      </div>
+    </div>
+  </div>
+}

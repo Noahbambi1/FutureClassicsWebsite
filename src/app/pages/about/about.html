@@ -1,0 +1,117 @@
+<!-- Page Header -->
+<section class="page-header">
+  <div class="page-header__background"></div>
+  <div class="container">
+    <span class="page-header__tag">About Us</span>
+    <h1 class="page-header__title">A Family Legacy<br>of Excellence</h1>
+    <p class="page-header__intro">
+      Since 1988, Future Classics has been creating beautiful, functional spaces 
+      for discerning homeowners across Johannesburg and beyond.
+    </p>
+  </div>
+</section>
+
+<!-- Story Section -->
+<section class="story section">
+  <div class="container">
+    <div class="story__grid">
+      <div class="story__content">
+        <span class="section-tag">Our Story</span>
+        <h2 class="story__title">Three Decades of Craftsmanship</h2>
+        <div class="story__text">
+          <p>
+            Future Classics began as a small workshop with a simple vision: to create 
+            cabinetry that would stand the test of time, both in quality and design.
+          </p>
+          <p>
+            Today, we've grown into a full-service interior design studio and manufacturing 
+            facility, but our founding principles remain unchanged. Every project receives 
+            the same attention to detail and commitment to excellence that defined our 
+            earliest work.
+          </p>
+          <p>
+            As a family-owned business, we understand the importance of home. We bring 
+            that personal touch to every project, treating your space as if it were our own.
+          </p>
+        </div>
+      </div>
+      <div class="story__image">
+        <img src="images/bathrooms/ANP_1273.jpg" alt="Future Classics craftsmanship">
+        <div class="story__image-accent"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Values Section -->
+<section class="values section">
+  <div class="container">
+    <div class="values__header">
+      <span class="section-tag">Our Values</span>
+      <h2 class="values__title">What Drives Us</h2>
+    </div>
+    <div class="values__grid">
+      @for (value of values; track value.title; let i = $index) {
+        <div class="value-card">
+          <span class="value-card__number">0{{ i + 1 }}</span>
+          <h3 class="value-card__title">{{ value.title }}</h3>
+          <p class="value-card__description">{{ value.description }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Services Section -->
+<section class="about-services section">
+  <div class="container">
+    <div class="about-services__header">
+      <span class="section-tag">What We Do</span>
+      <h2 class="about-services__title">Two Branches,<br>One Standard</h2>
+    </div>
+
+    @for (service of services; track service.title; let i = $index) {
+      <div class="service-block" [class.service-block--reverse]="i % 2 !== 0">
+        <div class="service-block__content">
+          <span class="service-block__subtitle">{{ service.subtitle }}</span>
+          <h3 class="service-block__title">{{ service.title }}</h3>
+          <p class="service-block__description">{{ service.description }}</p>
+          <ul class="service-block__features">
+            @for (feature of service.features; track feature) {
+              <li class="service-block__feature">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+                {{ feature }}
+              </li>
+            }
+          </ul>
+        </div>
+        <div class="service-block__image">
+          @if (i === 0) {
+            <img src="images/bathrooms/_NP_1287.jpg" alt="Interior Design Studio">
+          } @else {
+            <img src="images/kitchens/_MG_7062.jpg" alt="Custom Cabinetry">
+          }
+        </div>
+      </div>
+    }
+  </div>
+</section>
+
+<!-- Guarantee Section -->
+<section class="guarantee section">
+  <div class="container">
+    <div class="guarantee__content">
+      <span class="section-tag">Our Promise</span>
+      <h2 class="guarantee__title">Quality Guaranteed</h2>
+      <p class="guarantee__text">
+        Future Classics has a policy of attending to any issues regarding our products 
+        for an indefinite amount of time. All moving parts and Caesarstone tops come 
+        with a lifetime supplier guarantee. Maintaining your kitchen and keeping it 
+        in tip-top shape is our greatest pleasure.
+      </p>
+      <a routerLink="/contact" class="btn btn--primary">Start Your Project</a>
+    </div>
+  </div>
+</section>
